@@ -1,0 +1,9 @@
+/.env*
+/relatorios/
+/dados/*
+!/dados/.gitkeep
+!/dados/custos_por_modelo.csv
+!/dados/mapa_skus.csv
+!/dados/afiliados_pipeline.csv
+!/dados/pos_venda_fila.csv
+!/dados/consentimentos_crm.csv

@@ -1,0 +1,54 @@
+{
+  "ambiente": "demonstração",
+  "indicadores": [
+    {
+      "setor": "Comercial",
+      "nome": "Pedidos pagos",
+      "valor": "120",
+      "fonte": "Exemplo fictício",
+      "atualizado_em": null
+    },
+    {
+      "setor": "Comercial",
+      "nome": "Margem de contribuição",
+      "valor": "21%",
+      "fonte": "Exemplo fictício",
+      "atualizado_em": null
+    },
+    {
+      "setor": "Operações",
+      "nome": "Peças prontas",
+      "valor": "680",
+      "fonte": "Exemplo fictício",
+      "atualizado_em": null
+    },
+    {
+      "setor": "Financeiro",
+      "nome": "Créditos conciliados",
+      "valor": "R$ 12.800",
+      "fonte": "Exemplo fictício",
+      "atualizado_em": null
+    },
+    {
+      "setor": "Financeiro",
+      "nome": "Divergências bancárias",
+      "valor": "3",
+      "fonte": "Exemplo fictício",
+      "atualizado_em": null
+    },
+    {
+      "setor": "Diretoria",
+      "nome": "Pedidos projetados em 30 dias",
+      "valor": "4.200",
+      "fonte": "Exemplo fictício",
+      "atualizado_em": null
+    },
+    {
+      "setor": "Pessoas",
+      "nome": "Vagas abertas",
+      "valor": "2",
+      "fonte": "Exemplo fictício",
+      "atualizado_em": null
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+modo: diagnostico
+fuso: America/Sao_Paulo
+empresa: Orig Têxtil
+canais:
+  - shopee
+  - tiktok-shop
+  - mercado-livre
+  - shein
+  - amazon
+contas_autorizadas_para_escrita: []
+metas:
+  categoria_e_criterio_top_1: null
+  margem_de_contribuicao_minima: null
+  teto_de_ads_diario_brl: null
+  teto_de_amostras_mensal_brl: null
+  tolerancia_de_variacao_de_preco: null
+  prazo_maximo_dos_dados_em_horas: null

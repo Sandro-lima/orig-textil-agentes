@@ -1,0 +1,28 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Orig Têxtil | Painel</title><style>
+*{box-sizing:border-box}body{background:#f5f3ee;color:#142b27;font:16px system-ui;margin:auto;max-width:1120px;padding:30px}h1{font-size:clamp(2rem,7vw,4rem);margin:.2em 0}.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px}article{border:1px solid #d5ddd6;background:#fff;border-radius:12px;padding:20px}strong{display:block;font-size:1.8rem;margin:.4em 0}label,small{display:block}small{color:#48635d}.tag{background:#dcebe4;padding:.45em .8em;border-radius:2em}section{margin:28px 0}</style>
+<header class="top"><b>ORIG TÊXTIL</b><span id="modo" class="tag"></span></header><h1>Painel da empresa</h1><label for="entrada">Importar indicadores em JSON</label><input id="entrada" type="file" accept=".json"><p id="estado" role="status"></p><main id="painel"></main>
+<script>
+let dados={"ambiente": "demonstração", "indicadores": [{"setor": "Comercial", "nome": "Pedidos pagos", "valor": "120", "fonte": "Exemplo fictício", "atualizado_em": null}, {"setor": "Comercial", "nome": "Margem de contribuição", "valor": "21%", "fonte": "Exemplo fictício", "atualizado_em": null}, {"setor": "Operações", "nome": "Peças prontas", "valor": "680", "fonte": "Exemplo fictício", "atualizado_em": null}, {"setor": "Financeiro", "nome": "Créditos conciliados", "valor": "R$ 12.800", "fonte": "Exemplo fictício", "atualizado_em": null}, {"setor": "Financeiro", "nome": "Divergências bancárias", "valor": "3", "fonte": "Exemplo fictício", "atualizado_em": null}, {"setor": "Diretoria", "nome": "Pedidos projetados em 30 dias", "valor": "4.200", "fonte": "Exemplo fictício", "atualizado_em": null}, {"setor": "Pessoas", "nome": "Vagas abertas", "valor": "2", "fonte": "Exemplo fictício", "atualizado_em": null}]};
+const painel=document.querySelector('#painel');
+const estado=document.querySelector('#estado');
+function elemento(pai,tag,texto){const e=document.createElement(tag);e.textContent=texto;pai.append(e);return e;}
+function mostrar(){
+ document.querySelector('#modo').textContent=dados.ambiente==='demonstração'?'Demonstração':'Arquivo importado';
+ painel.replaceChildren();
+ const grupos=Map.groupBy?Map.groupBy(dados.indicadores,x=>x.setor):dados.indicadores.reduce((m,x)=>m.set(x.setor,[...(m.get(x.setor)||[]),x]),new Map());
+ for(const [setor,items] of grupos){
+  const sec=elemento(painel,'section','');elemento(sec,'h2',setor);
+  const grade=elemento(sec,'div','');grade.className='grid';
+  for(const i of items){const c=elemento(grade,'article','');elemento(c,'div',i.nome);elemento(c,'strong',i.valor);elemento(c,'small',i.fonte);
+   const t=elemento(c,'small','Sem horário da fonte');if(i.atualizado_em)t.dataset.hora=i.atualizado_em;}
+ }
+ atualizarIdade();
+}
+function atualizarIdade(){for(const e of painel.querySelectorAll('[data-hora]')){const d=new Date(e.dataset.hora);e.textContent=d.toLocaleString('pt-BR')+' · há '+Math.max(0,Math.floor((Date.now()-d)/1000))+' s';}}
+document.querySelector('#entrada').addEventListener('change',async e=>{try{
+ const a=e.target.files[0];if(!a)return;const x=JSON.parse(await a.text());
+ if(!Array.isArray(x.indicadores)||!x.indicadores.length||!x.indicadores.every(i=>i&&['setor','nome','valor','fonte'].every(k=>typeof i[k]==='string')&&(!i.atualizado_em||!isNaN(Date.parse(i.atualizado_em)))))throw Error();
+ dados=x;mostrar();estado.textContent='Arquivo carregado.';
+}catch{estado.textContent='JSON inválido. Confira o arquivo de exemplo.';}});
+mostrar();setInterval(atualizarIdade,1000);
+</script></html>

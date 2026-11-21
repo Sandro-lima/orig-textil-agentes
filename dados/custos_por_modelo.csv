@@ -1,0 +1,6 @@
+﻿modelo;rendimento_m_kg;tecido_brl_kg;consumo_m_peca;costura_brl;corte_brl;outros_brl;tecido_brl_peca;custo_brl_peca;status
+Saia longa com fenda;2,5;29;0,77;4;0,5;0,3;8,93;13,73;aguarda_validacao
+Regata básica;2,5;25;0,35;3,5;0,5;0,3;3,50;7,80;aguarda_validacao
+Baby tee;2,5;25;0,48;3,5;0,5;0,3;4,80;9,10;aguarda_validacao
+Vestido midi;2,3;29,9;0,88;5,5;0,5;0,3;11,44;17,74;aguarda_validacao
+Vestido com costas trançadas;;;;;;;;17,74;vinculado_ao_midi_aguarda_validacao
